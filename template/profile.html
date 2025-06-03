@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #f4f6f8, #e8eaf6);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 100%;
+            padding: 16px;
+            background: #22223b;
+            color: #fff;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+        }
+        .profile-card {
+            width: 500px; /* Existing width */
+            padding: 40px; /* Existing padding */
+            background: #fff;
+            border-radius: 20px; /* Existing border radius */
+            box-shadow: 0 8px 40px rgba(0,0,0,0.2); /* Existing shadow */
+            display: flex;
+            flex-direction: column; /* Change layout to column */
+            align-items: flex-start; /* Align content to the start */
+            margin: auto; /* Center the card vertically and horizontally */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Adjust position */
+        }
+        .profile-image {
+            width: 120px; /* Increased image size */
+            height: 120px; /* Increased image size */
+            border-radius: 50%; /* Circular image */
+            object-fit: cover;
+            position: absolute; /* Position image absolutely */
+            top: 20px; /* Move image to upper-right corner */
+            right: 20px; /* Move image to upper-right corner */
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2); /* Existing shadow */
+        }
+        .profile-details {
+            width: 100%; /* Ensure details take full width */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 60px; /* Add spacing below the image */
+        }
+        .profile-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: #22223b;
+            margin-bottom: 8px;
+        }
+        .profile-value {
+            font-size: 18px;
+            color: #4a4e69;
+            margin-bottom: 12px;
+        }
+        .profile-value:last-child {
+            margin-bottom: 0;
+        }
+        .logout-button {
+            margin-top: 16px;
+            padding: 10px 28px;
+            background: #e63946;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .logout-button:hover {
+            background: #d62828;
+        }
+        footer {
+            margin-top: auto;
+            padding: 16px;
+            background: #22223b;
+            color: #fff;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Welcome to Your Profile
+    </header>
+    <div class="profile-card">
+        {% if image %}
+        <img src="{{ image }}" alt="Profile Image" class="profile-image">
+        {% endif %}
+        <div class="profile-details">
+            <div class="profile-name">{{ name }}</div>
+            <div class="profile-value">{{ age }} Years Old</div>
+            <div class="profile-value">{{ address }}</div>
+            <form method="POST" action="{{ url_for('logout') }}">
+                <button type="submit" name="logout" class="logout-button">Log Out</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        © 2023 Your Application. All rights reserved.
+    </footer>
+</body>
+</html>
