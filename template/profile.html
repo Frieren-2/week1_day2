@@ -92,6 +92,15 @@
             text-align: center;
             font-size: 14px;
         }
+        .alert {
+            width: 500px;
+            padding: 16px;
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
@@ -111,8 +120,17 @@
             </form>
         </div>
     </div>
+    {% with messages = get_flashed_messages(category_filter=["danger"]) %}
+      {% if messages %}
+        <div class="alert alert-danger">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
     <footer>
-        © 2023 Your Application. All rights reserved.
+        &copy; 2023 Your Website
     </footer>
 </body>
 </html>

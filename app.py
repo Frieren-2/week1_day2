@@ -80,9 +80,9 @@ def register():
             cursor.close()
             conn.close()
         except mysql.connector.Error:
-            flash('A database error occurred. Please try again.')
+            flash('A database error occurred. Please try again.', 'danger')
         except Exception:
-            flash('An unexpected error occurred. Please try again.')
+            flash('An unexpected error occurred. Please try again.', 'danger')
     return render_template('register.html')
 
 # Route: Login

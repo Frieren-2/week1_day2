@@ -71,11 +71,33 @@
         .register-link a:hover {
             text-decoration: underline;
         }
+        .alert {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 14px;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
     </style>
 </head>
 <body>
     <div class="form-container">
         <h2>Login</h2>
+        <!-- Notification section for danger messages -->
+        {% with messages = get_flashed_messages(category_filter=["danger"]) %}
+          {% if messages %}
+            <div class="alert alert-danger">
+              {% for message in messages %}
+                <p>{{ message }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
         <form method="POST">
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
